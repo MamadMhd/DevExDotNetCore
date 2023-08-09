@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sVDqT/i3Lf6gFOO6OwqLmWpwjriMfN0gQGU9A1FHwt4QuCeI1dZdJHDyeJ3YJLfe/PIrU9zjiLm2kPqoeiMYYw==",
+  "dgSpecHash": "+iUn/E9YDpjsvPLSZlu7h7v33Nz2c6jAJp2h/SqXnUCJa/R97r+e/3xtRG9laS/lb8Bj1U54V2CcEbJ4LxLTMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Persia\\source\\repos\\DevExtremeAspNetCoreApp1\\DevExtremeAspNetCoreApp1\\DevExtremeAspNetCoreApp1.csproj",
   "expectedPackageFiles": [
@@ -115,7 +115,7 @@
     "C:\\Users\\Persia\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Persia\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Persia\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\Persia\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\Persia\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Persia\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\Persia\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
     "C:\\Users\\Persia\\.nuget\\packages\\nuget.dependencyresolver.core\\6.3.1\\nuget.dependencyresolver.core.6.3.1.nupkg.sha512",

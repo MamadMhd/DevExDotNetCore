@@ -14,6 +14,6 @@ namespace DevExtremeAspNetCoreApp1.Data
         {
         }
 
-        public DbSet<DevExtremeAspNetCoreApp1.Models.Book> Book { get; set; } = default!;
+        public DbSet<DevExtremeAspNetCoreApp1.Models.Book> Books { get; set; } = default!;
     }
 }

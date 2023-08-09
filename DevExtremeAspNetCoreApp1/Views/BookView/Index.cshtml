@@ -3,18 +3,24 @@
 <h2>Books</h2>
 
 @(Html.DevExtreme().DataGrid<Book>()
+    .ID("gridContainer")
     .ShowBorders(true)
     .DataSource(d => d.Mvc()
-        .Controller("Books")
-        .LoadAction("GetBook")
-        .InsertAction("PostBook")
-        .UpdateAction("PutBook")
-        .DeleteAction("DeleteBook")
+        .Controller("Books1")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
         .Key("Id"))
+    .Editing(editing => {
+        editing.Mode(GridEditMode.Form);
+        editing.AllowUpdating(true);
+        editing.AllowAdding(true);
+        editing.AllowDeleting(true);
+    })
     .Columns(columns =>
     {
         columns.AddFor(m => m.Id);
-            
         columns.AddFor(m => m.Title);
         columns.AddFor(m => m.Genre);
         columns.AddFor(m => m.PublishDate);
@@ -23,7 +29,6 @@
     .Paging(p => p.PageSize(10))
     .FilterRow(f => f.Visible(true))
     .HeaderFilter(f => f.Visible(true))
-    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
     .GroupPanel(p => p.Visible(true))
     .Grouping(g => g.AutoExpandAll(false))
     .RemoteOperations(true)

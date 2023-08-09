@@ -9,8 +9,9 @@ using DevExtremeAspNetCoreApp1.Data;
 using DevExtremeAspNetCoreApp1.Models;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Mvc;
-using Newtonsoft.Json;
+using System.Text.Json;
 using Microsoft.Extensions.Caching.Memory;
+using System.Data;
 
 namespace DevExtremeAspNetCoreApp1.Controllers
 {
@@ -29,7 +30,7 @@ namespace DevExtremeAspNetCoreApp1.Controllers
         [HttpGet]
         public object GetBook(DataSourceLoadOptions loadOptions)
         {
-            return DataSourceLoader.Load(_context.Book, loadOptions);
+            return DataSourceLoader.Load(_context.Books, loadOptions);
         }
 
         
@@ -38,7 +39,7 @@ namespace DevExtremeAspNetCoreApp1.Controllers
         [HttpGet("{Id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
-            var book = await _context.Book.FindAsync(id);
+            var book = await _context.Books.FindAsync(id);
 
             if (book == null)
             {
@@ -50,11 +51,15 @@ namespace DevExtremeAspNetCoreApp1.Controllers
 
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{Id}")]
-        public IActionResult PutBook(int key, string values)
+        [HttpPut]
+        public IActionResult PutBook(int Id, string values)
         {
-            var book = BookExists(key);
-            JsonConvert.PopulateObject(values, book);
+            var book = _context.Books.FindAsync(Id);
+            if (book == null) {
+                return NotFound();
+            }
+            
+            //JsonConvert.PopulateObject(value: values, target: book);
 
             if (!TryValidateModel(book))
                 return BadRequest();
@@ -69,30 +74,30 @@ namespace DevExtremeAspNetCoreApp1.Controllers
         [HttpPost]
         public IActionResult PostBook(string values)
         {
-            var newBook = new Book();
-            JsonConvert.PopulateObject(values, newBook);
+            //var book = new Book();
+            //JsonConvert.PopulateObject(values, book);
+            Book book = JsonSerializer.Deserialize<Book>(values);
 
-            if (!TryValidateModel(newBook))
+            if (!TryValidateModel(book))
                 return BadRequest();
-
-            _context.Book.Add(newBook);
+            _context.Books.Add(book);
             _context.SaveChanges();
 
-            return Ok(newBook);
+            return Ok();
         }
 
         // DELETE: api/Books/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public void DeleteBook(int key)
         {
-            var order = _context.Book.First(e => e.Id == key);
-            _context.Book.Remove(order);
+            var order = _context.Books.Find(key);
+            _context.Books.Remove(order);
             _context.SaveChanges();
         }
 
         private bool BookExists(int id)
         {
-            return _context.Book.Any(e => e.Id == id);
+            return _context.Books.Any(e => e.Id == id);
         }
     }
 }
