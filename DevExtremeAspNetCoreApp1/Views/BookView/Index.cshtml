@@ -1,0 +1,30 @@
+﻿@using DevExtremeAspNetCoreApp1.Models
+
+<h2>Books</h2>
+
+@(Html.DevExtreme().DataGrid<Book>()
+    .ShowBorders(true)
+    .DataSource(d => d.Mvc()
+        .Controller("Books")
+        .LoadAction("GetBook")
+        .InsertAction("PostBook")
+        .UpdateAction("PutBook")
+        .DeleteAction("DeleteBook")
+        .Key("Id"))
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.Id);
+            
+        columns.AddFor(m => m.Title);
+        columns.AddFor(m => m.Genre);
+        columns.AddFor(m => m.PublishDate);
+        columns.AddFor(m => m.Price);
+    })
+    .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+    .GroupPanel(p => p.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
+    .RemoteOperations(true)
+)
